@@ -1,0 +1,159 @@
+name: Automated Website Testing CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Secure minimal permissions: only read repository contents
+permissions:
+  contents: read
+
+jobs:
+  validate-website:
+    name: Code Quality & Integrity Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 1. Checkout Repository
+        id: checkout_repo
+        uses: actions/checkout@v4
+
+      - name: 2. Set Up Node.js Environment
+        id: setup_node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 3. Verify Required Project Files Exist
+        id: check_files
+        run: |
+          echo "=================================================="
+          echo " STEP 1: CHECKING ESSENTIAL PROJECT FILES         "
+          echo "=================================================="
+          REQUIRED_FILES=("index.html" "style.css" "script.js" "README.md")
+          MISSING_FILES=0
+
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✔ Found required file: $file"
+            else
+              echo "✖ ERROR: Missing required file: $file"
+              MISSING_FILES=$((MISSING_FILES + 1))
+            fi
+          done
+
+          if [ $MISSING_FILES -ne 0 ]; then
+            echo ""
+            echo "❌ CI FAILED: $MISSING_FILES required file(s) are missing from repository!"
+            exit 1
+          fi
+
+          echo ""
+          echo "✔ SUCCESS: All essential project files are present."
+
+      - name: 4. Verify Stylesheet and Script References in HTML
+        id: check_refs
+        run: |
+          echo "=================================================="
+          echo " STEP 2: VERIFYING ASSET & REFERENCE INTEGRITY    "
+          echo "=================================================="
+          INTEGRITY_FAILED=0
+
+          # 1. Check stylesheet link reference in index.html
+          if grep -q 'href="style.css"' index.html; then
+            echo "✔ Found stylesheet link: <link rel=\"stylesheet\" href=\"style.css\"> in index.html"
+          else
+            echo "✖ ERROR: Missing or incorrect link reference to 'style.css' in index.html"
+            INTEGRITY_FAILED=1
+          fi
+
+          # 2. Check script reference in index.html
+          if grep -q 'src="script.js"' index.html; then
+            echo "✔ Found script link: <script src=\"script.js\"></script> in index.html"
+          else
+            echo "✖ ERROR: Missing or incorrect script tag with 'src=\"script.js\"' in index.html"
+            INTEGRITY_FAILED=1
+          fi
+
+          # 3. Verify style.css is non-empty
+          if [ -s "style.css" ]; then
+            LINES_CSS=$(wc -l < style.css)
+            echo "✔ style.css is valid and non-empty ($LINES_CSS lines)"
+          else
+            echo "✖ ERROR: style.css is empty (0 bytes)"
+            INTEGRITY_FAILED=1
+          fi
+
+          # 4. Verify script.js is non-empty
+          if [ -s "script.js" ]; then
+            LINES_JS=$(wc -l < script.js)
+            echo "✔ script.js is valid and non-empty ($LINES_JS lines)"
+          else
+            echo "✖ ERROR: script.js is empty (0 bytes)"
+            INTEGRITY_FAILED=1
+          fi
+
+          if [ $INTEGRITY_FAILED -ne 0 ]; then
+            echo ""
+            echo "❌ CI FAILED: Asset reference or file integrity check failed!"
+            exit 1
+          fi
+
+          echo ""
+          echo "✔ SUCCESS: All asset references and files verified."
+
+      - name: 5. Validate HTML5 Structure and Syntax
+        id: validate_html
+        run: |
+          echo "=================================================="
+          echo " STEP 3: RUNNING HTML5 SYNTAX & STRUCTURE LINTER  "
+          echo "=================================================="
+          # Run maintained HTMLHint validator via npx
+          npx --yes htmlhint index.html --rules "tag-pair=true,spec-char-escape=true,id-unique=true,src-not-empty=true,attr-value-double-quotes=true,doctype-first=true,tagname-lowercase=true,attr-lowercase=true,title-require=true"
+
+          if [ $? -eq 0 ]; then
+            echo ""
+            echo "✔ SUCCESS: HTML validation passed cleanly with 0 syntax or linting errors."
+          else
+            echo ""
+            echo "❌ CI FAILED: HTML syntax validation failed. Fix the errors above."
+            exit 1
+          fi
+
+      - name: 6. Validate JavaScript Syntax
+        id: validate_js
+        run: |
+          echo "=================================================="
+          echo " STEP 4: VERIFYING JAVASCRIPT SYNTAX INTEGRITY    "
+          echo "=================================================="
+          # Perform native Node.js syntax check without runtime execution
+          node --check script.js
+
+          if [ $? -eq 0 ]; then
+            echo ""
+            echo "✔ SUCCESS: JavaScript syntax check passed cleanly without errors."
+          else
+            echo ""
+            echo "❌ CI FAILED: JavaScript contains syntax errors. Fix script.js before merging."
+            exit 1
+          fi
+
+      - name: 7. Publish Pipeline Status Summary
+        if: always()
+        run: |
+          echo "### 🚀 Automated Testing CI Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Tool / Engine | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :--- | :--- |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Required Files Existence** | Bash Filesystem Probe | ${{ steps.check_files.outcome == 'success' && '✅ PASSED' || (steps.check_files.outcome == 'failure' && '❌ FAILED' || '⚪ SKIPPED') }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **HTML Asset References** | Grep & Non-empty Validator | ${{ steps.check_refs.outcome == 'success' && '✅ PASSED' || (steps.check_refs.outcome == 'failure' && '❌ FAILED' || '⚪ SKIPPED') }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **HTML5 Syntax & Structure** | HTMLHint Engine v1.9+ | ${{ steps.validate_html.outcome == 'success' && '✅ PASSED' || (steps.validate_html.outcome == 'failure' && '❌ FAILED' || '⚪ SKIPPED') }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **JavaScript Syntax Check** | Node.js --check Engine | ${{ steps.validate_js.outcome == 'success' && '✅ PASSED' || (steps.validate_js.outcome == 'failure' && '❌ FAILED' || '⚪ SKIPPED') }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> **Workflow Execution Status**: ${{ job.status == 'success' && '✅ All automated checks passed successfully!' || '❌ One or more quality checks failed. Review step logs above.' }}" >> $GITHUB_STEP_SUMMARY

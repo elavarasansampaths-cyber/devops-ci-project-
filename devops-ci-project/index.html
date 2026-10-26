@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio of Alex Johnson - DevOps & Web Development Student Project with Automated GitHub Actions CI Testing">
+    <title>Alex Johnson | DevOps &amp; Web Developer Portfolio</title>
+    <!-- Stylesheet Link Checked by CI -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Announcement / CI Pipeline Status Banner -->
+    <div class="ci-banner">
+        <div class="container banner-content">
+            <span class="badge badge-ci">
+                <span class="pulse-dot"></span>
+                CI Pipeline: Automated Testing Active
+            </span>
+            <span class="banner-text">Every code push is verified with GitHub Actions</span>
+            <a href="#devops" class="banner-link">View Pipeline &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="#home" class="logo">
+                <span class="logo-accent">&lt;Alex/&gt;</span>
+                <span class="logo-sub">DevOps Portfolio</span>
+            </a>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <!-- Main Navigation Links -->
+            <nav class="site-nav" id="siteNav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Me</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#devops" class="nav-link">DevOps Workflow</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Home Section (Hero) -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <div class="hero-pill">
+                        <span class="icon">&#9881;</span> Continuous Integration in Action
+                    </div>
+                    <h1 class="hero-title">
+                        Building Resilient Web Apps with <span class="text-gradient">Automated CI/CD</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Hello! I am a Computer Science Engineering student passionate about DevOps practices,
+                        automated software testing, and modern responsive web development.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#devops" class="btn btn-primary">Explore CI/CD Workflow</a>
+                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Automated Checks</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">v4</span>
+                            <span class="stat-label">GitHub Actions</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">0</span>
+                            <span class="stat-label">Production Regressions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-card-wrapper">
+                    <!-- Simulated DevOps Terminal Card -->
+                    <div class="terminal-card">
+                        <div class="terminal-header">
+                            <span class="terminal-btn close-btn"></span>
+                            <span class="terminal-btn min-btn"></span>
+                            <span class="terminal-btn max-btn"></span>
+                            <span class="terminal-title">github-actions-runner.log</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="term-line"><span class="term-dim">$</span> git push origin main</div>
+                            <div class="term-line term-cyan">&gt; Triggering Workflow: ci.yml</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> [Job: Verify-Codebase] Starting runner...</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> Checkout repository (actions/checkout@v4)</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> Core Files Existence Check: PASSED</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> Asset &amp; Reference Integrity: PASSED</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> HTML Validation (htmlhint): 0 errors</div>
+                            <div class="term-line"><span class="term-green">&#10004;</span> JavaScript Syntax Check: OK</div>
+                            <div class="term-line term-success-box">&#127881; Status: All CI Checks Passed!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Me Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Background &amp; Goals</span>
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Bridging the gap between software development and automated operations.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h3>Hi, I&apos;m Alex Johnson</h3>
+                        <p class="about-lead">
+                            I am a final-year Computer Science undergraduate aiming to build a career as a DevOps Engineer.
+                            I believe quality software is not just written well&mdash;it must be verified continuously before it reaches users.
+                        </p>
+                        <p>
+                            Through hands-on projects, I practice Git workflows, automated linting, test suites, and
+                            pipeline configuration. This project demonstrates how automated testing with GitHub Actions
+                            safeguards web development by catching broken links, missing files, and syntax errors on every single commit.
+                        </p>
+
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">&#127891;</div>
+                                <div class="highlight-text">
+                                    <strong>Education</strong>
+                                    <span>B.Tech / B.E. Computer Science &amp; Engineering</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">&#9874;</div>
+                                <div class="highlight-text">
+                                    <strong>DevOps Focus</strong>
+                                    <span>Continuous Integration, Testing, Code Quality Gates</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">&#128187;</div>
+                                <div class="highlight-text">
+                                    <strong>Web Development</strong>
+                                    <span>Semantic HTML5, Responsive CSS3, JavaScript ES6+</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">&#128640;</div>
+                                <div class="highlight-text">
+                                    <strong>Goal</strong>
+                                    <span>Deploy reliable software with zero manual friction</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-sidebar">
+                        <div class="profile-card">
+                            <div class="avatar-box">
+                                <span class="avatar-letters">AJ</span>
+                            </div>
+                            <h4>Alex Johnson</h4>
+                            <p class="profile-role">DevOps &amp; Cloud Enthusiast</p>
+                            <ul class="profile-meta">
+                                <li><strong>Location:</strong> Campus City, India</li>
+                                <li><strong>Role Target:</strong> Junior DevOps / QA Engineer</li>
+                                <li><strong>Version Control:</strong> Git &amp; GitHub</li>
+                                <li><strong>Automation:</strong> GitHub Actions CI</li>
+                            </ul>
+                            <div class="profile-footer">
+                                <span class="badge badge-success">&#10003; Available for Entry-Level Roles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Technical Competencies</span>
+                    <h2 class="section-title">Skills &amp; Technologies</h2>
+                    <p class="section-subtitle">A balanced toolkit covering modern frontend development and automated DevOps practices.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <!-- Category 1: Frontend Development -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <span class="category-icon">&#127760;</span>
+                            <h3>Web Development</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">HTML5 (Semantic &amp; Accessible)</span>
+                                    <span class="skill-level">Proficient</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">CSS3 (Flexbox, Grid, Media Queries)</span>
+                                    <span class="skill-level">Proficient</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">JavaScript (ES6+, DOM Manipulation)</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Responsive &amp; Mobile-First Design</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 2: DevOps & Automation -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <span class="category-icon">&#9881;</span>
+                            <h3>DevOps &amp; CI/CD</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">GitHub Actions Workflows</span>
+                                    <span class="skill-level">Hands-on</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Git (Branching, Merging, PRs)</span>
+                                    <span class="skill-level">Proficient</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Automated Linters &amp; Validators</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Continuous Integration Principles</span>
+                                    <span class="skill-level">Proficient</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 3: Tools & Methodologies -->
+                    <div class="skill-category-card">
+                        <div class="category-header">
+                            <span class="category-icon">&#129520;</span>
+                            <h3>Tools &amp; Environment</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Bash &amp; PowerShell Shell Scripting</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Node.js CLI &amp; NPM Ecosystem</span>
+                                    <span class="skill-level">Working Knowledge</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">VS Code &amp; Git CLI Integration</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-meta">
+                                    <span class="skill-name">Quality Assurance &amp; Code Review</span>
+                                    <span class="skill-level">Intermediate</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Practical Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Real-world academic and practical implementations highlighting automation and clean code.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1: Featured CI/CD Project -->
+                    <article class="project-card featured-project">
+                        <div class="project-badge">Featured College Assignment</div>
+                        <div class="project-body">
+                            <div class="project-tech">
+                                <span class="tech-pill">GitHub Actions</span>
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">CSS3</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Git</span>
+                            </div>
+                            <h3 class="project-title">Automated Website Testing Using CI/CD with GitHub Actions</h3>
+                            <p class="project-desc">
+                                A responsive portfolio website with an automated Continuous Integration pipeline.
+                                Validates file structures, asset references, and HTML/JS syntax upon every commit and pull request.
+                            </p>
+                            <div class="project-features">
+                                <div class="feature-item">&#10004; Automated validation via maintained htmlhint tool</div>
+                                <div class="feature-item">&#10004; Zero external server cost &amp; zero complex setup</div>
+                                <div class="feature-item">&#10004; Instant build failure warnings on broken references</div>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#devops" class="btn btn-primary btn-sm">Inspect Workflow</a>
+                                <a href="#contact" class="btn btn-outline btn-sm">Project Details</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Static Website Optimization -->
+                    <article class="project-card">
+                        <div class="project-body">
+                            <div class="project-tech">
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">CSS Flexbox</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Web Perf</span>
+                            </div>
+                            <h3 class="project-title">Responsive Cloud-Ready Portal</h3>
+                            <p class="project-desc">
+                                A fast, lightweight campus student dashboard designed with pure HTML, CSS, and modern JS.
+                                Features dark/light themes, offline responsiveness, and accessibility compliance.
+                            </p>
+                            <div class="project-features">
+                                <div class="feature-item">&#10004; Mobile-first responsive layouts</div>
+                                <div class="feature-item">&#10004; 98+ Google Lighthouse performance score</div>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Automated Quality Gate Script -->
+                    <article class="project-card">
+                        <div class="project-body">
+                            <div class="project-tech">
+                                <span class="tech-pill">Bash</span>
+                                <span class="tech-pill">Node CLI</span>
+                                <span class="tech-pill">Git Hooks</span>
+                                <span class="tech-pill">Linux</span>
+                            </div>
+                            <h3 class="project-title">Local Pre-Commit Quality Gate</h3>
+                            <p class="project-desc">
+                                A lightweight pre-commit hook script that replicates remote CI checks locally on developer machines
+                                before any commit is accepted into the Git history.
+                            </p>
+                            <div class="project-features">
+                                <div class="feature-item">&#10004; Prevents bad commits before push</div>
+                                <div class="feature-item">&#10004; Fast local execution under 2 seconds</div>
+                            </div>
+                            <div class="project-actions">
+                                <a href="#contact" class="btn btn-outline btn-sm">Learn More</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. DevOps Workflow Section -->
+        <section id="devops" class="devops-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">DevOps Architecture</span>
+                    <h2 class="section-title">The CI/CD Workflow Explained</h2>
+                    <p class="section-subtitle">
+                        An end-to-end breakdown of how Continuous Integration automates quality assurance.
+                        Click any step in the pipeline below to inspect its purpose and execution.
+                    </p>
+                </div>
+
+                <!-- Pipeline Stepper UI -->
+                <div class="pipeline-stepper" id="pipelineStepper">
+                    <button class="pipeline-step active" data-step="1">
+                        <span class="step-num">1</span>
+                        <span class="step-title">Developer</span>
+                        <span class="step-sub">Local Editing</span>
+                    </button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <button class="pipeline-step" data-step="2">
+                        <span class="step-num">2</span>
+                        <span class="step-title">Git</span>
+                        <span class="step-sub">Version Commit</span>
+                    </button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <button class="pipeline-step" data-step="3">
+                        <span class="step-num">3</span>
+                        <span class="step-title">GitHub</span>
+                        <span class="step-sub">Push / PR</span>
+                    </button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <button class="pipeline-step" data-step="4">
+                        <span class="step-num">4</span>
+                        <span class="step-title">GitHub Actions</span>
+                        <span class="step-sub">Runner Trigger</span>
+                    </button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <button class="pipeline-step" data-step="5">
+                        <span class="step-num">5</span>
+                        <span class="step-title">Automated Checks</span>
+                        <span class="step-sub">Lint &amp; Validate</span>
+                    </button>
+                    <div class="pipeline-arrow">&rarr;</div>
+                    <button class="pipeline-step" data-step="6">
+                        <span class="step-num">6</span>
+                        <span class="step-title">Success / Fail</span>
+                        <span class="step-sub">Status Report</span>
+                    </button>
+                </div>
+
+                <!-- Interactive Step Detail Card -->
+                <div class="step-detail-card" id="stepDetailCard">
+                    <div class="step-detail-header">
+                        <span class="step-detail-badge" id="stepDetailBadge">Step 1 of 6</span>
+                        <h3 class="step-detail-title" id="stepDetailTitle">Developer: Local Code Editing</h3>
+                    </div>
+                    <p class="step-detail-desc" id="stepDetailDesc">
+                        The developer modifies HTML, CSS, or JavaScript files locally in an editor such as VS Code.
+                        All changes remain on the local machine until staged and committed into Git.
+                    </p>
+                    <div class="step-detail-terminal">
+                        <div class="term-bar">Terminal Command / Action</div>
+                        <pre id="stepDetailCommand"><code># Edit files locally in VS Code or any text editor
+code index.html style.css script.js</code></pre>
+                    </div>
+                </div>
+
+                <!-- Educational Concepts Cards: CI vs CD -->
+                <div class="concept-cards-grid">
+                    <div class="concept-card">
+                        <div class="concept-icon">&#128260;</div>
+                        <h4 class="concept-title">Continuous Integration (CI)</h4>
+                        <div class="concept-tag concept-active">Implemented in this Project</div>
+                        <p class="concept-desc">
+                            The software practice where developers frequently commit code to a shared repository.
+                            Every push triggers an automated build and test runner to detect syntax issues, missing assets,
+                            and broken links immediately.
+                        </p>
+                        <ul class="concept-points">
+                            <li>&#10004; Early bug detection before merging</li>
+                            <li>&#10004; Consistent automated validation</li>
+                            <li>&#10004; Eliminates &ldquo;works on my machine&rdquo; issues</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">&#128640;</div>
+                        <h4 class="concept-title">Continuous Delivery (CD)</h4>
+                        <div class="concept-tag concept-future">Next Step in DevOps</div>
+                        <p class="concept-desc">
+                            An extension of CI where validated code is automatically packaged and prepared for release.
+                            Deployment to a production or staging server is ready to trigger with manual one-click approval.
+                        </p>
+                        <ul class="concept-points">
+                            <li>&#8226; Ensures every tested build is deployable</li>
+                            <li>&#8226; Manual human gatekeeper decides release timing</li>
+                            <li>&#8226; Not implemented in this baseline assignment</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">&#127757;</div>
+                        <h4 class="concept-title">Continuous Deployment (CD)</h4>
+                        <div class="concept-tag concept-future">Advanced Automation</div>
+                        <p class="concept-desc">
+                            The most automated stage where every change that passes all CI tests is deployed directly
+                            to end-users in production without any manual intervention.
+                        </p>
+                        <ul class="concept-points">
+                            <li>&#8226; Zero human intervention after git push</li>
+                            <li>&#8226; Requires rigorous, mature test coverage</li>
+                            <li>&#8226; Not implemented in this baseline assignment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scope Note Callout -->
+                <div class="scope-callout">
+                    <div class="scope-icon">&#9432;</div>
+                    <div class="scope-text">
+                        <strong>Academic Project Scope Notice:</strong>
+                        This project strictly implements <strong>Continuous Integration and Automated Testing</strong>.
+                        It automates verification and quality gates using GitHub Actions. It intentionally does not perform
+                        automated web hosting deployment, cloud hosting, or database operations, keeping the architecture
+                        100% free, reproducible, and beginner-friendly.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Let&apos;s Connect</span>
+                    <h2 class="section-title">Contact &amp; Feedback</h2>
+                    <p class="section-subtitle">Have questions about this CI/CD implementation? Leave a message below.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Form Card -->
+                    <div class="contact-card">
+                        <h3>Send a Message</h3>
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="userName">Your Full Name <span class="required">*</span></label>
+                                <input type="text" id="userName" name="userName" class="form-control" placeholder="e.g. Jane Doe" required>
+                                <span class="field-error" id="nameError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userEmail">Email Address <span class="required">*</span></label>
+                                <input type="email" id="userEmail" name="userEmail" class="form-control" placeholder="e.g. jane@example.com" required>
+                                <span class="field-error" id="emailError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userSubject">Subject <span class="required">*</span></label>
+                                <input type="text" id="userSubject" name="userSubject" class="form-control" placeholder="e.g. CI/CD Pipeline Inquiry" required>
+                                <span class="field-error" id="subjectError"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="userMessage">Message <span class="required">*</span></label>
+                                <textarea id="userMessage" name="userMessage" rows="4" class="form-control" placeholder="Write your feedback or inquiry here..." required></textarea>
+                                <span class="field-error" id="messageError"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                                Send Message
+                            </button>
+                        </form>
+
+                        <!-- Feedback Toast / Alert -->
+                        <div class="form-toast" id="formToast" role="alert" aria-live="polite"></div>
+                    </div>
+
+                    <!-- Contact Information Sidebar -->
+                    <div class="contact-info-card">
+                        <h3>Contact Information</h3>
+                        <p class="contact-info-lead">
+                            Placeholder contact details provided for college assignment evaluation.
+                        </p>
+
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">&#9993;</div>
+                                <div class="info-details">
+                                    <span class="info-label">Email</span>
+                                    <span class="info-value">student.devops@example.edu</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">&#9742;</div>
+                                <div class="info-details">
+                                    <span class="info-label">Phone</span>
+                                    <span class="info-value">+1 (555) 019-2834</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">&#128205;</div>
+                                <div class="info-details">
+                                    <span class="info-label">Campus Location</span>
+                                    <span class="info-value">Department of Computer Science &amp; Engineering</span>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon">&#128187;</div>
+                                <div class="info-details">
+                                    <span class="info-label">GitHub Repository</span>
+                                    <span class="info-value">github.com/student/devops-ci-project</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="academic-badge-box">
+                            <div class="academic-badge-title">College Assignment Details</div>
+                            <p class="academic-badge-text">
+                                <strong>Course:</strong> DevOps &amp; Cloud Computing Lab<br>
+                                <strong>Project Title:</strong> Automated Website Testing Using CI/CD with GitHub Actions<br>
+                                <strong>Evaluation Status:</strong> Ready for Submission
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <span class="footer-logo">&lt;Alex/&gt; DevOps</span>
+                <p>&copy; 2026 Alex Johnson. College Assignment Project.</p>
+                <p class="footer-subtext">Developed with HTML, CSS, JavaScript, and GitHub Actions CI.</p>
+            </div>
+            <div class="footer-right">
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#devops">CI/CD Workflow</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Script Link Checked by CI -->
+    <script src="script.js"></script>
+</body>
+</html>
